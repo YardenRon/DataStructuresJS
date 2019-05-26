@@ -4,9 +4,13 @@ export class LinkedList {
     head: Node;
     tail: Node;
 
-    append(data: any): void {
-        const node = new Node(data);
+    append(key: any, value: any): void {
+        const node = new Node(key, value);
 
+        this.appendNode(node);
+    }
+
+    appendNode(node: Node): void {
         if (!this.head) {
             this.head = this.tail = node;
         } else {
@@ -16,9 +20,13 @@ export class LinkedList {
         }
     }
 
-    insertAtFront(data: any): void {
-        const node = new Node(data);
+    insertAtFront(key: any, value: any): void {
+        const node = new Node(key, value);
 
+        this.insertNodeAtFront(node);
+    }
+
+    insertNodeAtFront(node: Node): void {
         if (!this.head) {
             this.head = this.tail = node;
         } else {
@@ -28,25 +36,34 @@ export class LinkedList {
         }
     }
 
-    remove(data: any): void {
+    remove(key: any): Node {
         let current = this.head;
 
         while (current) {
-            if (current.data === data) {
-                if (current === this.head) {
-                    if (current.next) {
-                        current.next.prev = null;
-                    }
-                    this.head = current.next;
-                } else if (current === this.tail) {
-                    this.tail = current.prev;
-                    this.tail.next = null;
-                } else {
-                    current.prev.next = current.next;
-                    current.next.prev = current.prev;
-                }
+            if (current.key === key) {
+                this.removeNode(current);
+                return current;
             }
             current = current.next;
+        }
+
+        return null;
+    }
+
+    removeNode(node: Node): void {
+        if (node) {
+            if (node === this.head) {
+                if (node.next) {
+                    node.next.prev = null;
+                }
+                this.head = node.next;
+            } else if (node === this.tail) {
+                this.tail = node.prev;
+                this.tail.next = null;
+            } else {
+                node.prev.next = node.next;
+                node.next.prev = node.prev;
+            }
         }
     }
 
@@ -67,11 +84,11 @@ export class LinkedList {
         this.head = prev;
     }
 
-    find(data: any): Node {
+    find(key: any): Node {
         let current = this.head;
 
         while (current) {
-            if (current.data === data) {
+            if (current.key === key) {
                 return current;
             }
             current = current.next;

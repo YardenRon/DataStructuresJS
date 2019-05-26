@@ -1,9 +1,11 @@
 export class Node {
-    data: any;
+    key: any;
+    value: any;
     prev: Node;
     next: Node;
 
-    constructor (data: any) {
-        this.data = data;
+    constructor (key: any, value: any) {
+        this.key = key;
+        this.value = value;
     }
 }
