@@ -20,8 +20,8 @@ export class Cache {
         if (node !== this.list.head) {
             this.list.removeNode(node);
             this.list.insertNodeAtFront(node);
-            return node.value;
         }
+        return node.value;
     }
 
     remove(key: any): boolean {
