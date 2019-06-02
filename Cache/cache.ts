@@ -31,7 +31,7 @@ export class Cache {
         return true;
     }
 
-    insert(key: any, value:any) {
+    insert(key: any, value:any): void {
         this.remove(key);
 
         const reachedMaxSize = Object.keys(this.hashTable).length >= this.maxSize;

@@ -10,13 +10,35 @@
 // temp = list.find(3);
 // console.log("End");
 
-import { Cache } from "./Cache/cache";
+// import { Cache } from "./Cache/cache";
 
-let cache = new Cache(3);
-cache.insert(72, 'Food');
-cache.insert(13, 'Keychain');
-cache.insert(45, 'Blanket');
-cache.remove(45);
-cache.insert(45, 'Blanket');
-console.log(cache.get(13));
-cache.insert(27, 'Book');
+// let cache = new Cache(3);
+// cache.insert(72, 'Food');
+// cache.insert(13, 'Keychain');
+// cache.insert(45, 'Blanket');
+// cache.remove(45);
+// cache.insert(45, 'Blanket');
+// console.log(cache.get(13));
+// cache.insert(27, 'Book');
+
+import { HashTable } from "./HashTable/hashTable";
+
+let hashTable = new HashTable(5);
+try {
+    hashTable.put(1, "hello");
+} catch (err) {
+    console.log(err);
+}
+
+hashTable.put("yo", "shalom");
+hashTable.put("who", "fizz");
+hashTable.put("tonight", "young");
+hashTable.put("yes", "you are");
+hashTable.put("let", "me down");
+hashTable.put("strong", "meal");
+
+console.log(hashTable.get("tonight"));
+console.log(hashTable.get("what"));
+
+hashTable.remove("yes");
+hashTable.remove("what");
